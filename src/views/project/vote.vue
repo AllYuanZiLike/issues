@@ -3,20 +3,26 @@
     <!--    各种活动数量-->
     <div class="state">
       <!--      投票活动-->
+      <el-badge :value="voteNum" class="num_badge">
       <el-button :class="voteFocus ? 'vote_voterFocus' : 'vote_voter'" @click="getListVote(0)">
         <el-icon size="large"><Histogram /></el-icon>
         <p class="word">投票活动</p>
       </el-button>
+      </el-badge>
       <!--      监票活动-->
+      <el-badge :value="jianNum" class="num_badge">
       <el-button :class="jianFocus ? 'vote_jianFocus' : 'vote_jian'" @click="getListJian(1)">
         <el-icon size="large"><Histogram /></el-icon>
         <p class="word">监票活动</p>
       </el-button>
+      </el-badge>
       <!--      计票活动-->
+      <el-badge :value="jiNum" class="num_badge">
       <el-button :class="jiPiaoFocus ? 'vote_jipiaoFocus' : 'vote_jipiao'" @click="getListJiPiao(2)">
         <el-icon size="large"><Histogram /></el-icon>
         <p class="word">计票活动</p>
       </el-button>
+      </el-badge>
     </div>
     <!--    议题列表-->
     <div class="voteBox">
@@ -148,6 +154,9 @@ export default defineComponent({
       projectButton: true,
       jianFocus: false,
       jiPiaoFocus: false,
+      voteNum:0,
+      jianNum:0,
+      jiNum:0,
       Listform: [
         {
           beginTime: "",
@@ -183,23 +192,9 @@ export default defineComponent({
       this.userLogin.id = this.store.state.user.id;
       this.userLogin.realName = this.store.state.user.realName;
       this.userLogin.username = this.store.state.user.username;
-      this.getListVote(this.userLogin.duty);
-      // /**
-      //  * 获取的列表
-      //  */ baseService
-      //   .get("/project/participant/have", {
-      //     id: this.userLogin.id,
-      //     duty: this.userLogin.duty
-      //   })
-      //   .then((res) => {
-      //     console.log(res);
-      //     if (res.code !== 0) return false;
-      //     this.Listform = res.data.list;
-      //   });
-      // this.getDataText();
-      // for (let i = 0; i < this.Listform.length; i++) {
-      //   console.log(this.Listform[i].progressSrc);
-      // }
+      this.getListJian(1);
+      this.getListJiPiao(2);
+      this.getListVote(0);
     },
     // updateDrawerPro(){
     //   this.drawerProject = false
@@ -255,6 +250,7 @@ export default defineComponent({
           console.log(res);
           if (res.code !== 0) return false;
           this.Listform = res.data;
+          this.voteNum=res.data.length
           this.getDataText();
         });
 
@@ -277,6 +273,7 @@ export default defineComponent({
           console.log(res);
           if (res.code !== 0) return false;
           this.Listform = res.data;
+          this.jianNum=res.data.length
           this.getDataText();
         });
 
@@ -299,6 +296,7 @@ export default defineComponent({
           console.log(res);
           if (res.code !== 0) return false;
           this.Listform = res.data;
+          this.jiNum=res.data.length
           this.getDataText();
         });
 
@@ -367,150 +365,160 @@ export default defineComponent({
   overflow: hidden;
   display: flex;
   justify-content: center;
-  //投票
-  .vote_voter {
-    cursor: pointer;
-    flex: 1;
-    display: inline-block;
-    height: 10vh;
-    background-color: #42a5f5;
-    margin: 0 2px;
-    color: #fff;
-    border-radius: 10px;
-    padding: 1%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    //数字
-    .number {
-      font-size: 40px;
+  align-items: center;
+  .num_badge {
+    width: 30%;
+    //投票
+    .vote_voter {
+      cursor: pointer;
+      width: 90%;
+      display: inline-block;
+      height: 10vh;
+      background-color: #eef1fc;
+      margin: 0 2px;
+      color: #87a2ff;
+      border-radius: 10px;
+      padding: 1%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      //数字
+      .number {
+        font-size: 40px;
+      }
+      //文字
+      .word {
+        font-size: 25px;
+      }
     }
-    //文字
-    .word {
-      font-size: 25px;
-    }
-  }
 
-  .vote_voterFocus {
-    cursor: pointer;
-    flex: 1;
-    display: inline-block;
-    height: 10vh;
-    background-color: #42a5f5;
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.35), 0 6px 16px rgba(0, 0, 0, 0.24);
-    margin: 0 20px;
-    color: #fff;
-    border-radius: 10px;
-    //border: 2px dotted #42a5f5;
-    padding: 1%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    //数字
-    .number {
-      font-size: 40px;
-    }
-    //文字
-    .word {
-      font-size: 25px;
-    }
-  }
-  //监票
-  .vote_jian {
-    flex: 1;
-    cursor: pointer;
-    background-color: #3ce86d;
-    display: inline-block;
-    height: 10vh;
-    margin: 0 20px;
-    color: #fff;
-    border-radius: 10px;
-    padding: 1%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    //数字
-    .number {
-      font-size: 40px;
-    }
-    //文字
-    .word {
-      font-size: 25px;
+    .vote_voterFocus {
+      cursor: pointer;
+      width: 90%;
+      display: inline-block;
+      height: 10vh;
+      background-color: #eef1fc;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15), 0 6px 16px rgba(0, 0, 0, 0.15);
+      margin: 0 20px;
+      color: #87a2ff;
+      border-radius: 10px;
+      //border: 2px dotted #42a5f5;
+      padding: 1%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      //数字
+      .number {
+        font-size: 40px;
+      }
+      //文字
+      .word {
+        font-size: 25px;
+      }
     }
   }
-  .vote_jianFocus {
-    flex: 1;
-    cursor: pointer;
-    background-color: #3ce86d;
-    display: inline-block;
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.35), 0 6px 16px rgba(0, 0, 0, 0.24);
-    height: 10vh;
-    margin: 0 20px;
-    color: #fff;
-    border-radius: 10px;
-    padding: 1%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    //数字
-    .number {
-      font-size: 40px;
+  .num_badge {
+    width: 30%;
+    //监票
+    .vote_jian {
+      width: 90%;
+      cursor: pointer;
+      background-color: #eef1fc;
+      display: inline-block;
+      height: 10vh;
+      margin: 0 20px;
+      color: #87a2ff;
+      border-radius: 10px;
+      padding: 1%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      //数字
+      .number {
+        font-size: 40px;
+      }
+      //文字
+      .word {
+        font-size: 25px;
+      }
     }
-    //文字
-    .word {
-      font-size: 25px;
+    .vote_jianFocus {
+      width: 90%;
+      cursor: pointer;
+      background-color: #eef1fc;
+      display: inline-block;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15), 0 6px 16px rgba(0, 0, 0, 0.15);
+      height: 10vh;
+      margin: 0 20px;
+      color: #87a2ff;
+      border-radius: 10px;
+      padding: 1%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      //数字
+      .number {
+        font-size: 40px;
+      }
+      //文字
+      .word {
+        font-size: 25px;
+      }
     }
   }
-  //计票
-  .vote_jipiao {
-    flex: 1;
-    cursor: pointer;
-    background-color: #ec6d6d;
-    margin: 0 20px;
-    display: inline-block;
-    height: 10vh;
-    color: #fff;
-    border-radius: 10px;
-    padding: 1%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    //数字
-    .number {
-      font-size: 40px;
+  .num_badge {
+    width: 30%;
+    //计票
+    .vote_jipiao {
+      width: 90%;
+      cursor: pointer;
+      background-color: #eef1fc;
+      margin: 0 20px;
+      display: inline-block;
+      height: 10vh;
+      color: #87a2ff;
+      border-radius: 10px;
+      padding: 1%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      //数字
+      .number {
+        font-size: 40px;
+      }
+      //文字
+      .word {
+        font-size: 25px;
+      }
     }
-    //文字
-    .word {
-      font-size: 25px;
-    }
-  }
-  .vote_jipiaoFocus {
-    flex: 1;
-    cursor: pointer;
-    background-color: #ec6d6d;
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.35), 0 6px 16px rgba(0, 0, 0, 0.24);
-    margin: 0 20px;
-    display: inline-block;
-    height: 10vh;
-    color: #fff;
-    border-radius: 10px;
-    padding: 1%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    //数字
-    .number {
-      font-size: 40px;
-    }
-    //文字
-    .word {
-      font-size: 25px;
+    .vote_jipiaoFocus {
+      width: 90%;
+      cursor: pointer;
+      background-color: #eef1fc;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15), 0 6px 16px rgba(0, 0, 0, 0.15);
+      margin: 0 20px;
+      display: inline-block;
+      height: 10vh;
+      color: #87a2ff;
+      border-radius: 10px;
+      padding: 1%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      //数字
+      .number {
+        font-size: 40px;
+      }
+      //文字
+      .word {
+        font-size: 25px;
+      }
     }
   }
 }
@@ -553,7 +561,9 @@ export default defineComponent({
     margin-right: 3.5%;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     width: 31%;
-    background-color: #ffffff;
+    background-color: #f8faff;
+    background-image: url(@/assets/images/issues/vote_item_bg.png);
+    background-size: 100% 100%;
     display: flex;
     flex-direction: column;
     //议题主体

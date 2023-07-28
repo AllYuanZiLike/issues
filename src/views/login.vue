@@ -38,9 +38,9 @@
       </div>
     </div>
     <div class="login-footer">
-      <p>
-        <a href="https://demo.cloud.renren.io/renren-cloud-tenant" target="_blank">{{ $t("login.demo") }}</a>
-      </p>
+<!--      <p>-->
+<!--        <a href="https://demo.cloud.renren.io/renren-cloud-tenant" target="_blank">{{ $t("login.demo") }}</a>-->
+<!--      </p>-->
       <p>
         <a href="https://www.renren.io/" target="_blank">{{ $t("ui.app.name") }}</a
         >{{ state.year }} © {{ $t("ui.app.copyright") }}
@@ -232,10 +232,10 @@ const rules = ref({
     text-align: center;
     position: absolute;
     bottom: 0;
-    padding: 20px;
+    padding: 5px;
     color: rgba(255, 255, 255, 0.6);
     p {
-      margin: 10px 0;
+      margin: 3px 0;
     }
     a {
       padding: 0 5px;

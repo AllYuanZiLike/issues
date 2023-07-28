@@ -2,15 +2,15 @@
  * 主题设置默认值
  */
 export const themeSetting = {
-  sidebar: "dark",
+  sidebar: "light",
   topHeader: "primary",
-  themeColor: "#17B3A3",
+  themeColor: "#8680fa",
   navLayout: "left",
   contentFull: true,
   logoAuto: false,
   colorIcon: false,
   sidebarUniOpened: true,
-  openTabsPage: true,
+  openTabsPage: false,
   tabStyle: "default",
   sidebarCollapse: false
 };

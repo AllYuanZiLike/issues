@@ -8,7 +8,7 @@
             <el-button type="info" @click="refresh()" style="margin-top: 3.5vh; margin-right: 1vw;" class="refresh">
               <el-icon><Refresh /></el-icon>
             </el-button>
-            <el-input v-model="dataForm.name" placeholder="请输入子议题名称" @keyup.enter="getDataList" :input-style="{ width: '150px'}">
+            <el-input v-model="dataForm.name" placeholder="请输入子会议名称" @keyup.enter="getDataList" :input-style="{ width: '150px'}">
               <template #append>
                 <el-button type="default" @click="getDataList()">{{ $t("query") }}</el-button>
               </template>
@@ -150,6 +150,7 @@ export default defineComponent({
       this.refresh();
     },
     refresh(){
+      this.dataForm.name='';
       this.getDataList();
       this.getData()
     },

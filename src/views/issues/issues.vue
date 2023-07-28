@@ -37,7 +37,7 @@
           </el-button>
           <el-button class="history" type="primary"  @click="checkHistory">
             <div class="img"><img src="@/assets/images/issues/history.png" alt="" /></div>
-            历史会议
+            历史议题
           </el-button>
         </div>
       </div>
@@ -87,7 +87,7 @@
                   </div>
                 </div>
                 <div class="check">
-                  <el-button type="default" @click="checkConcent(item.id)">点击查看详细信息</el-button>
+                  <el-button size="small" type="default" @click="checkConcent(item.id)">点击查看详细信息</el-button>
                 </div>
               </div>
             </div>
@@ -442,11 +442,11 @@ export default defineComponent({
           align-items: center;
           //数字
           .number {
-            font-size: 40px;
+            font-size: 2.5em;
           }
           //文字
           .word {
-            font-size: 25px;
+            font-size: 1.6em;
           }
         }
       }
@@ -481,10 +481,11 @@ export default defineComponent({
           flex-direction: column;
           align-items: center;
           .number {
-            font-size: 40px;
+            font-size: 2.5em;
           }
+          //文字
           .word {
-            font-size: 25px;
+            font-size: 1.6em;
           }
         }
       }
@@ -498,7 +499,7 @@ export default defineComponent({
 
       .history {
         height: 22vh;
-        font-size: 1.9em;
+        font-size: 1.7em;
         width: 20vw;
         color: #87a2ff;
         border:3px solid #bbcafa;
@@ -515,7 +516,7 @@ export default defineComponent({
       }
       .add {
         height: 22vh;
-        font-size: 1.9em;
+        font-size: 1.7em;
         color:#87a2ff;
         width: 20vw;
         border:3px solid #bbcafa;

@@ -1,13 +1,21 @@
 <template>
   <div class="mod-project__prjproject">
-    <el-drawer
-      v-model="drawerPro"
-      title="项目"
-      size="90%"
-      direction="rtl"
-      :before-close="handleClose"
-      class="drawer"
-    >
+    <el-drawer v-model="drawerPro" title="项目" size="90%" direction="rtl" :before-close="handleClose" class="drawer">
+      <div class="query">
+        <el-form>
+          <el-form-item>
+            <!--      刷新按钮-->
+            <el-button type="info" @click="dataForm.name='';getData()" style="margin-top: 3.5vh; margin-right: 1vw;" class="refresh">
+              <el-icon><Refresh /></el-icon>
+            </el-button>
+            <el-input v-model="dataForm.name" placeholder="请输入项目名称" @keyup.enter="getData" :input-style="{ width: '150px'}">
+              <template #append>
+                <el-button type="default" @click="getData()">{{ $t("query") }}</el-button>
+              </template>
+            </el-input>
+          </el-form-item>
+        </el-form>
+      </div>
     <div class="buttonBox">
       <div class="addBox" v-show="addBoxVisible">
         <el-button v-if="hasPermission('project:project:save')" class="add" type="primary" @click="addOrUpdateHandle()">
@@ -24,7 +32,9 @@
     </div>
     <el-empty description="暂无项目" image="src/assets/images/empty_data.png" v-if="(dataList.length== 0) && (this.dataForm.categoryStatus===1 || this.dataForm.categoryStatus===2) " />
     <div class="voteBox">
-      <div class="voteItem" v-for="(item, index) in dataList" :key="index">
+<!--      <div class="voteItem" v-for="(item, index) in dataList" :key="index">-->
+      <el-carousel type="card" height="45vh" :autoplay="false">
+        <el-carousel-item class="voteItem" v-for="(item, index) in dataList" :key="index">
         <div class="top">
           <div class="top-header">
             <div class="img">
@@ -45,7 +55,7 @@
             <p v-html="item.info"></p>
           </div>
         </div>
-        <div class="down">
+        <div class="down" v-show="categoryStatus===1">
           <el-tooltip class="box-item" effect="light" content="查看相关文件" placement="bottom">
             <div class="img" v-if="hasPermission('project:project:checkFile')" v-show="fileVisible" @click="addFile(item.id, item.status)">
               <img src="@/assets/images/file.png" alt="" />
@@ -66,7 +76,8 @@
             </div>
           </el-tooltip>
         </div>
-      </div>
+        </el-carousel-item>
+      </el-carousel>
     </div>
     <el-pagination :current-page="page" :page-sizes="[6, 9, 12, 27]" :page-size="limit" :total="total" layout="total, sizes, prev, pager, next, jumper" @size-change="pageSizeChangeHandle" @current-change="pageCurrentChangeHandle"> </el-pagination>
     <!-- 弹窗, 新增 / 修改 -->
@@ -259,9 +270,10 @@ export default defineComponent({
 </script>
 <style lang="less" scoped>
 .drawer {
-  background-image: url(@/assets/images/item-bg.jpg) !important;
-  background-size: 100% auto !important;
-
+  background-color: #b3c9f3 !important;
+  .refresh {
+    margin-bottom: 2%;
+  }
   .buttonBox {
     display: flex;
     width: 100%;
@@ -319,24 +331,25 @@ export default defineComponent({
 
   .voteBox {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
 
-    .voteItem:nth-child(3n) {
-      margin-right: 0;
+    .voteItem:nth-child(2n+1){
+      background-image: url("@/assets/images/issues/vote_item_bg1.png");
+      background-size:  100% 100%;
+    }
+    .voteItem:nth-child(2n) {
+      background-color: #d2d8f5;
     }
 
     .voteItem {
       //height: 34vh;
-      background-image: url(@/assets/images/bg-vote-item.png) !important;
-      background-size: auto 100% !important;
+      //background-image: url(@/assets/images/issues/vote_item_bg1.png);
+      //background-size: 100% 100%;
       margin-bottom: 30px;
       margin-right: 3.5%;
-      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+      //box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
       border-radius: 7.5%;
-      width: 31%;
-      background-color: #ffffff;
+      //width: 31%;
+      //background-color: #ffffff;
       display: flex;
       flex-direction: column;
 
