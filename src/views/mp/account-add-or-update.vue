@@ -84,6 +84,7 @@ const dataFormSubmitHandle = () => {
       return false;
     }
     (!dataForm.id ? baseService.post : baseService.put)("/sys/mp/account", dataForm).then((res) => {
+      if (res.code != 0) return false;
       ElMessage.success({
         message: t("prompt.success"),
         duration: 500,
