@@ -70,7 +70,7 @@ export default defineComponent({
         info: "",
         startTime: "",
         stopTime: "",
-        isOnline: "",
+        isOnline: 0 as any,
         status: "",
         reserveBeginTime: "",
         reserveEndTime: "",

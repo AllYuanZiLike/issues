@@ -361,7 +361,7 @@
                 </el-button>
               </el-tooltip>
               <el-tooltip class="box-item" effect="light" :content="dataForm.contentText" placement="bottom">
-                <el-button class="box-item" type="primary" v-show="startVoteVisible" v-if="hasPermission('/project:category:changeVote')" @click="startVote(dataForm.id)">
+                <el-button class="box-item" type="primary" v-show="startVoteVisible" v-if="hasPermission('/project:category:changeVote')" @click="startVote(dataForm.id,dataForm.status)">
                   <el-icon :size="22" v-if="dataForm.status===0||dataForm.status===2"><VideoPlay /></el-icon>
                   <el-icon :size="22" v-if="dataForm.status===1||dataForm.status===3"><VideoPause /></el-icon>
                 </el-button>
@@ -381,7 +381,7 @@
         </div>
         <template #footer>
           <span class="dialog-footer">
-            <el-button @click="checkVisible = false;this.getData;dataForm.name='';">关闭</el-button>
+            <el-button @click="checkVisible = false;getData;dataForm.name='';">关闭</el-button>
           </span>
         </template>
       </el-dialog>
@@ -848,7 +848,7 @@ export default defineComponent({
   setup() {
     const addKey = ref(0);
     const addOrUpdateRef = ref();
-    const addOrUpdateHandle = (id?: number) => {
+    const addOrUpdateHandle = (id?: string) => {
       addKey.value++;
       nextTick(() => {
         addOrUpdateRef.value.dataForm.$reset();
@@ -876,11 +876,16 @@ export default defineComponent({
       categoryId:"",//当前项目评审id
       categoryStatus:0,//当前项目评审状态
       dataForm: {
+        id:"",
         name: "",
+        reserveBeginTime:"" as any,
+        reserveEndTime:"" as any,
         startDateTime: null as number | null,
         endDateTime: null as number | null,
-        isOnline: "",
+        isOnline: 0 as any,
         status: 0,
+        info:"",
+        room:{} as any,
         delFlag: "",
         userId:"",
         statusText: "",

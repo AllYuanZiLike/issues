@@ -150,7 +150,7 @@
             </el-descriptions>
             <div class="btn_box" v-show="!dataForm.buttonShow">
               <el-button class="box-item" type="primary" v-if="hasPermission('issues:issues:checkParticipant')" @click="(dataForm.id, dataForm.status)">查看参与人</el-button>
-              <el-button class="box-item" type="primary" v-if="hasPermission('issues:issues:checkSubissues')" @click="checkSubissues(dataForm.id, dataForm.status)">查看子议题</el-button>
+              <el-button class="box-item" type="primary" v-if="hasPermission('issues:issues:checkSubissues')" @click="checkSub(dataForm.id, dataForm.status)">查看子议题</el-button>
             </div>
           </div>
           <div class="check_right_box" v-show="dataForm.buttonShow">
@@ -210,7 +210,7 @@ historyConference
   setup() {
     const addKey = ref(0);
     const addOrUpdateRef = ref();
-    const addOrUpdateHandle = (id?: number) => {
+    const addOrUpdateHandle = (id?: string) => {
       addKey.value++;
       nextTick(() => {
         addOrUpdateRef.value.init(id);
@@ -232,7 +232,9 @@ historyConference
         id:"",
         name: "",
         status: "" as any,
+        info:"",
         roomId: "",
+        room:{} as any,
         startDateTime: null as number | null,
         endDateTime: null as number | null,
         reserveBeginTime: "",

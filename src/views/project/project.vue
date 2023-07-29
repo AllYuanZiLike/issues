@@ -30,7 +30,7 @@
 <!--        >-->
 <!--      </div>-->
     </div>
-    <el-empty description="暂无项目" image="src/assets/images/empty_data.png" v-if="(dataList.length== 0) && (this.dataForm.categoryStatus===1 || this.dataForm.categoryStatus===2) " />
+    <el-empty description="暂无项目" image="src/assets/images/empty_data.png" v-if="(dataList.length == 0) && (dataForm.categoryStatus===1 || dataForm.categoryStatus===2) " />
     <div class="voteBox">
 <!--      <div class="voteItem" v-for="(item, index) in dataList" :key="index">-->
       <el-carousel type="card" height="45vh" :autoplay="false">

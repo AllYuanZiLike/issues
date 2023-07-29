@@ -26,7 +26,7 @@
         <el-table-column prop="endTime" label="结束时间" width="250" align="center"></el-table-column>
         <el-table-column label="操作" align="center">
           <template #default="scope">
-            <el-button size="small" type="info" @click="exportHandle(scope.row.id)">导出</el-button>
+<!--            <el-button size="small" type="info" @click="exportHandle(scope.row.id)">导出</el-button>-->
             <el-button size="small" type="danger" @click="deleteHandle(scope.row.id)">删除</el-button>
           </template>
         </el-table-column>

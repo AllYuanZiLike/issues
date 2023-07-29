@@ -54,8 +54,8 @@
 <!--          <el-checkbox ref="checkAll" v-model="checked"  @change="checkedChange" :indeterminate="isIndeterminate"></el-checkbox>-->
         </el-form-item>
       </el-form>
-      <el-table v-loading="dataListLoading" ref="addstuForm" :data="stuForm" height="250" border @selection-change="dataListSelectionChangeHandle" @sort-change="dataListSortChangeHandle" style="width: 100%" >
-        <el-table-column type="selection" :reserve-selection="false" :selectable="checkSelectable" header-align="center" align="center" width="50"></el-table-column>
+      <el-table v-loading="dataListLoading" ref="multipleTableRef" :row-key="tableData.id" :data="tableData" height="250" border @selection-change="dataListSelectionChangeHandle" @sort-change="dataListSortChangeHandle" style="width: 100%" >
+        <el-table-column type="selection" :reserve-selection="true" :selectable="checkSelectable" header-align="center" align="center" width="50"></el-table-column>
         <el-table-column prop="no" label="学号" header-align="center" align="center"></el-table-column>
         <el-table-column prop="name" label="学生姓名" header-align="center" align="center"></el-table-column>
         <el-table-column prop="genderText" label="性别" header-align="center" align="center"></el-table-column>
@@ -77,7 +77,7 @@
 
 <script lang="ts">
 import useView from "@/hooks/useView";
-import { defineComponent, reactive, toRefs } from "vue";
+import { defineComponent, reactive, toRefs   } from "vue";
 import baseService from "@/service/baseService";
 import Progre from "@/views/conference/tprogress.vue";
 import ExcelImport from "@/views/conference/excel-import.vue"
@@ -154,7 +154,7 @@ export default defineComponent({
         { value: 5, label: "成人学科" },
         { value: 6, label: "研究生" }
       ],
-      stuForm: [],
+      tableData: [] as any,
       selectStuForm:[] as any
     });
     return { ...useView(state), ...toRefs(state) };
@@ -178,13 +178,13 @@ export default defineComponent({
     //   console.log(this.selectAll);
     //   if(this.selectAll){
     //     // this.checkSelectable=true
-    //     this.stuForm.forEach(row => {
+    //     this.tableData.forEach(row => {
     //       if(row) {
-    //         this.$refs.addstuForm.toggleRowSelection(row,true)
+    //         this.$refs.multipleTableRef.toggleRowSelection(row,true)
     //       }
     //     })
     //   }else if(!this.selectAll){
-    //     this.$refs.addstuForm.clearSelection()
+    //     this.$refs.multipleTableRef.clearSelection()
     //   }
     //   // this.selectAll = !this.selectAll;
     // },
@@ -208,20 +208,25 @@ export default defineComponent({
       console.log(this.selectAll)
       this.selectAll=!this.selectAll
       console.log(this.selectAll)
-      let _this = this;
-      this.$nextTick(()=>{
-        if (_this.selectAll) {
+      let that = this;
+      if(this.tableData!==[]) {
+        if (this.selectAll) {
           // 全选选中时当前页所有数据选中
-          _this.stuForm.forEach(row => {
+          this.tableData.forEach(row => {
             if (row) {
-              _this.$refs.addstuForm.toggleRowSelection(row, true);
+              this.$nextTick( ()=> {
+                (that.$refs.multipleTableRef as any).toggleRowSelection(row,true)
+              })
             }
           });
         } else {
-          _this.$refs.addstuForm.clearSelection();
+          this.$nextTick(()=>{
+            (that.$refs.multipleTableRef as any).clearSelection();
+          })
         }
-      })
+      }
     },
+
     //分页全选-全选时禁用选择框
     checkSelectable (row, index) {
       return !this.selectAll;
@@ -312,15 +317,15 @@ export default defineComponent({
         })
         .then((res) => {
           if (res.code !== 0) return false;
-          this.stuForm = res.data.list;
+          this.tableData = res.data.list;
           this.stutotal = res.data.total;
           this.getStuText();
           if(this.selectAll){
             this.$nextTick(() => {
-              for (let i = 0; i < this.stuForm.length; i++) {
-                // if (this.stuForm[i].isRerationItem.status == 1) {
-                // this.$refs.addstuForm.toggleRowSelection(this.stuForm[i])
-                this.dataForm.studentId[i] = this.stuForm[i].id
+              for (let i = 0; i < this.tableData.length; i++) {
+                // if (this.tableData[i].isRerationItem.status == 1) {
+                // this.$refs.multipleTableRef.toggleRowSelection(this.tableData[i])
+                this.dataForm.studentId[i] = this.tableData[i].id
                 // }
               }
             })
@@ -339,24 +344,24 @@ export default defineComponent({
       this.getStuData();
     },
     getStuText() {
-      this.stuForm = this.stuForm.map((item, index) => {
+      this.tableData = this.tableData.map((item, index) => {
         return { ...item, genderText: "", edBackText: "", resultText: "", sortText: "" };
       });
-      for (let i = 0; i < this.stuForm.length; i++) {
-        if (this.stuForm[i].gender === 0) this.stuForm[i].genderText = "女";
-        else if (this.stuForm[i].gender === 1) this.stuForm[i].genderText = "男";
+      for (let i = 0; i < this.tableData.length; i++) {
+        if (this.tableData[i].gender === 0) this.tableData[i].genderText = "女";
+        else if (this.tableData[i].gender === 1) this.tableData[i].genderText = "男";
       }
-      for (let i = 0; i < this.stuForm.length; i++) {
-        if (this.stuForm[i].educationBackground === 0) this.stuForm[i].edBackText = "本科";
-        else if (this.stuForm[i].educationBackground === 1) this.stuForm[i].edBackText = "研究生";
+      for (let i = 0; i < this.tableData.length; i++) {
+        if (this.tableData[i].educationBackground === 0) this.tableData[i].edBackText = "本科";
+        else if (this.tableData[i].educationBackground === 1) this.tableData[i].edBackText = "研究生";
       }
-      for (let i = 0; i < this.stuForm.length; i++) {
-        if (this.stuForm[i].type === 1) this.stuForm[i].sortText = "普通";
-        else if (this.stuForm[i].type === 2) this.stuForm[i].sortText = "上会讨论";
-        else if (this.stuForm[i].type === 3) this.stuForm[i].sortText = "往届";
-        else if (this.stuForm[i].type === 4) this.stuForm[i].sortText = "双学位";
-        else if (this.stuForm[i].type === 5) this.stuForm[i].sortText = "成人学科";
-        else if (this.stuForm[i].type === 6) this.stuForm[i].sortText = "研究生a";
+      for (let i = 0; i < this.tableData.length; i++) {
+        if (this.tableData[i].type === 1) this.tableData[i].sortText = "普通";
+        else if (this.tableData[i].type === 2) this.tableData[i].sortText = "上会讨论";
+        else if (this.tableData[i].type === 3) this.tableData[i].sortText = "往届";
+        else if (this.tableData[i].type === 4) this.tableData[i].sortText = "双学位";
+        else if (this.tableData[i].type === 5) this.tableData[i].sortText = "成人学科";
+        else if (this.tableData[i].type === 6) this.tableData[i].sortText = "研究生a";
       }
     },
     // 表单提交

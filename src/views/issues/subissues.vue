@@ -162,6 +162,7 @@ export default defineComponent({
       resultButton:false,
       currentId:"",
       dataForm: {
+        name:"",
         issuesId: "",
         issuesStatus: 0,
       }

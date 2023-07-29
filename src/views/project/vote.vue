@@ -172,6 +172,7 @@ export default defineComponent({
           reserveBeginTime: "",
           reserveEndTime: "",
           roomId: "",
+          room:{} as any,
           scrutatorId: "",
           state: "",
           status: 1,
