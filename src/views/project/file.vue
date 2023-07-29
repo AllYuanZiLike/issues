@@ -116,7 +116,7 @@ export default defineComponent({
         })
         .then((res) => {
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.dataList = res.data;
           this.dataListLoading = false;
           this.dataList = this.getDataListIsPage ? res.data.list : res.data;

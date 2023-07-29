@@ -51,7 +51,7 @@ export const useAppStore = defineStore("useAppStore", {
         baseService.get("/sys/user/info"), //加载用户信息
         baseService.get("/sys/dict/type/all") //加载字典
       ]).then(([menus, permissions, user, dicts]) => {
-        if (user.code !== 0) {
+        if (user.code != 0) {
           console.error("初始化用户数据错误", user.msg);
         }
         const [routes, routeToMeta] = mergeServerRoute(menus.data || [], getSysRouteMap());

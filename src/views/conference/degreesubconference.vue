@@ -243,11 +243,11 @@ export default defineComponent({
     endVote(id: string, index: number, name: string) {
       baseService.post("/conference/degreesubconference/over", { id: id, status: JSON.stringify(this.dataList[index].status) }).then((res) => {
         console.log(res);
-        if (res.code !== 0) return this['$message'].error(res.msg);
+        if (res.code != 0) return this['$message'].error(res.msg);
         this['$message'].warning("子会议" + name + "已结束");
         baseService.post("/conference/degreesubconferencestudent/result", { subConferenceId: id }).then((res) => {
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           // this.$message.warning("子会议" + name + "已结束");
           this.getDataList();
         });

@@ -71,7 +71,7 @@ export default defineComponent({
     // 修改 ：获取信息
     getInfo() {
       baseService.get("/issues/subissuesfile/" + this.dataForm.id).then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataForm = res.data;
@@ -107,7 +107,7 @@ export default defineComponent({
         }
         (!this.dataForm.id ? baseService.post : baseService.put)("/issues/subissuesfile", this.dataForm).then((res) => {
           console.log(res);
-          if (res.code !== 0) {
+          if (res.code != 0) {
             return this['$message'].error(res.msg);
           }
           this['$message']({

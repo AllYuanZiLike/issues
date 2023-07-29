@@ -15,7 +15,7 @@
           <template v-slot:reference>
             <el-input v-model="dataForm.parentName" :readonly="true" :placeholder="$t('menu.parentName')">
               <template v-slot:suffix>
-                <el-icon v-if="dataForm.pid !== '0'" @click.stop="deptListTreeSetDefaultHandle()" class="el-input__icon"><circle-close /></el-icon
+                <el-icon v-if="dataForm.pid != '0'" @click.stop="deptListTreeSetDefaultHandle()" class="el-input__icon"><circle-close /></el-icon
               ></template>
             </el-input>
           </template>

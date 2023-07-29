@@ -22,7 +22,7 @@
       </el-table-column>
       <el-table-column prop="openStyle" :label="$t('menu.openStyle')" header-align="center" align="center">
         <template v-slot="scope">
-          <span v-if="scope.row.menuType !== 0"></span>
+          <span v-if="scope.row.menuType != 0"></span>
           <el-tag v-else-if="scope.row.openStyle === 1">{{ $t("menu.openStyle1") }}</el-tag>
           <el-tag v-else type="info">{{ $t("menu.openStyle0") }}</el-tag>
         </template>

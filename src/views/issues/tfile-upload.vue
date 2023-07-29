@@ -39,7 +39,7 @@ export default defineComponent({
     // 上传之前
     beforeUploadHandle(file: IObject) {
       console.log(file.type);
-      if (file.type !== "application/pdf") {
+      if (file.type != "application/pdf") {
         this['$message'].error(this.$t("upload.tip", { format: "pdf" }));
         return false;
       }
@@ -48,7 +48,7 @@ export default defineComponent({
     // 上传成功
     successHandle(res: IObject, file: IObject, fileList: IObject[]) {
       console.log(res);
-      if (res.code !== 0) {
+      if (res.code != 0) {
         return this['$message'].error(res.msg);
       }
       this.url = res.data.url;

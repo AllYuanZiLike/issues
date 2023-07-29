@@ -7,7 +7,7 @@
           <template v-slot:reference>
             <el-input v-model="dataForm.parentName" :readonly="true" :placeholder="$t('menu.parentName')">
               <template v-slot:suffix>
-                <el-icon class="el-input__icon" v-if="dataForm.pid !== '0'" @click.stop="deptListTreeSetDefaultHandle()"><circle-close /></el-icon>
+                <el-icon class="el-input__icon" v-if="dataForm.pid != '0'" @click.stop="deptListTreeSetDefaultHandle()"><circle-close /></el-icon>
               </template> </el-input
           ></template>
         </el-popover>

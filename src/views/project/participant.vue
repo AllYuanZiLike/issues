@@ -85,7 +85,7 @@ export default defineComponent({
       this.dataForm.categoryStatus = this.categoryStatus;
       this.drawerPart = true;
       this.getDataList();
-      if (this.dataForm.categoryStatus !== 0) this.addButton = false;
+      if (this.dataForm.categoryStatus != 0) this.addButton = false;
       if(this.dataForm.categoryStatus === 3 || this.dataForm.categoryStatus === 4) this.updateOrDelete = false
     },
     handleClose() {

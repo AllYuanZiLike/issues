@@ -209,7 +209,7 @@ export default defineComponent({
       this.selectAll=!this.selectAll
       console.log(this.selectAll)
       let that = this;
-      if(this.tableData!==[]) {
+      if(this.tableData!=[]) {
         if (this.selectAll) {
           // 全选选中时当前页所有数据选中
           this.tableData.forEach(row => {
@@ -285,7 +285,7 @@ export default defineComponent({
     },
     getPartSum() {
       baseService.post("/conference/degreevoterecord/get", { conferenceId: this.dataForm.conferenceId, subConferenceId: this.dataForm.subConferenceId }).then((res) => {
-        if (res.code !== 0) return false;
+        if (res.code != 0) return false;
         this.pro = res.data.percent;
         this.sumVote = res.data.no + res.data.now;
         this.voted = res.data.now;
@@ -293,7 +293,7 @@ export default defineComponent({
       });
       for (let i = 0; i < this.dataList.length; i++) {
         this.dataList[i].voted = this.dataList[i].agree + this.dataList[i].disagree + this.dataList[i].abandon;
-        if (this.partSum !== 0) this.dataList[i].pro = (this.dataList[i].voted / this.partSum) * 100;
+        if (this.partSum != 0) this.dataList[i].pro = (this.dataList[i].voted / this.partSum) * 100;
         else this.dataList[i].pro = 0;
         console.log(this.dataList[i].pro);
       }
@@ -316,7 +316,7 @@ export default defineComponent({
           sort: JSON.stringify(this.dataStuForm.sort)
         })
         .then((res) => {
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.tableData = res.data.list;
           this.stutotal = res.data.total;
           this.getStuText();
@@ -371,7 +371,7 @@ export default defineComponent({
       }
       console.log(this.dataForm);
       baseService.post("/conference/degreesubconferencestudent", this.dataForm).then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         } else {
           this.dataForm.studentId = [];

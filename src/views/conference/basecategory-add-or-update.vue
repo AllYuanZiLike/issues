@@ -61,7 +61,7 @@ export default defineComponent({
     // 获取信息
     getInfo() {
       baseService.get("/conference/basecategory/" + this.dataForm.id).then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataForm = res.data;
@@ -75,7 +75,7 @@ export default defineComponent({
           return false;
         }
         (!this.dataForm.id ? baseService.post : baseService.put)("/conference/basecategory", this.dataForm).then((res) => {
-          if (res.code !== 0) {
+          if (res.code != 0) {
             return this['$message'].error(res.msg);
           }
           this['$message']({

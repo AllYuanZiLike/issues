@@ -59,7 +59,7 @@ const cancelHandle = () => {
 
 const commitHandle = () => {
   if (callback.value) {
-    if (state.dataListSelections?.length !== 1) {
+    if (state.dataListSelections?.length != 1) {
       ElMessage.error(t("user.selecterror"));
       return;
     } else {

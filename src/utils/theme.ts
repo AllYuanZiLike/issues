@@ -147,7 +147,7 @@ export const updateStyle = (style: string, oldCluster: string[], newCluster: str
  * @returns
  */
 export const updateTheme = (val: string): void => {
-  if (typeof val !== "string") return;
+  if (typeof val != "string") return;
   emits.emit(EMitt.OnLoading, true);
   const head = document.getElementsByTagName("head")[0];
   const themeCluster = getThemeCluster(val.replace("#", ""));

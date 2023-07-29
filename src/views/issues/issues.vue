@@ -298,7 +298,7 @@ export default defineComponent({
 
       baseService.get("/issues/issues/" + id).then((res) => {
         console.log(res)
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataForm = res.data;
@@ -360,7 +360,7 @@ export default defineComponent({
      */
     startVote(id: string, index: number) {
       baseService.get("/issues/subissues/status", { id: id, status: this.dataList![index].status }).then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.getDataList();

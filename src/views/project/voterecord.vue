@@ -8,9 +8,9 @@
       :before-close="handleClose"
     >
     <el-empty description="暂无结果" image="src/assets/images/no_result.png" v-if="voted === 0" />
-    <div class="mod-thesis__tresults" v-if="voted !== 0">
+    <div class="mod-thesis__tresults" v-if="voted != 0">
       <div class="result">
-        <figure v-if="voted !== 0">
+        <figure v-if="voted != 0">
           <div class="title">
 <!--            <b-->
 <!--              ><span>议题：{{ dataForm.issuesName }}</span-->
@@ -153,7 +153,7 @@ export default defineComponent({
     checkPro() {
     baseService.get("/project/voterecord/show", { projectId: this.dataForm.projectId }).then((res) => {
       console.log(res);
-      // if (res.code !== 0) {
+      // if (res.code != 0) {
       //   return this.$message.error(res.msg);
       // }
       // this.sumVote = res.data.allnumber;

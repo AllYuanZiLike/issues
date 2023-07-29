@@ -18,7 +18,7 @@
       </template>
     </el-dialog>
     <el-dialog title="文件预览" v-model="dialogFileVisible" width="40%" top="2%">
-<!--      v-if="file.length === 0" v-show="file.length !== 0"-->
+<!--      v-if="file.length === 0" v-show="file.length != 0"-->
 <!--      <el-empty description="该项目暂无已上传文件" image="src/assets/images/empty_data.png"/>-->
       <el-card class="box-card" >
         <div v-for="(item, index) in file" :key="index">
@@ -85,7 +85,7 @@ export default defineComponent({
     getProject() {
       // baseService.get("/project/project/page", { categoryId: this.categoryId }).then((res) => {
       //   console.log(res);
-      //   if (res.code !== 0) return false;
+      //   if (res.code != 0) return false;
       //   this.projectForm = res.data.list;
       //
       // });
@@ -98,7 +98,7 @@ export default defineComponent({
         })
         .then((res) => {
           console.log(res)
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.projectForm = res.data;
           this.projectForm = this.projectForm.map((item, index) => {
             return { ...item,voterId:"" };
@@ -151,7 +151,7 @@ export default defineComponent({
             })
             .then((res) => {
               console.log(res);
-              if (res.code !== 0) return false;
+              if (res.code != 0) return false;
               this['$message']({
                 message: this.$t("投票成功"),
                 type: "success",

@@ -9,7 +9,7 @@
           <template v-slot:reference>
             <el-input v-model="dataForm.parentName" :readonly="true" :placeholder="$t('dept.parentName')">
               <template v-slot:suffix>
-                <el-icon v-if="user.superAdmin === 1 && dataForm.pid !== '0'" @click.stop="deptListTreeSetDefaultHandle()" class="el-input__icon"><circle-close /></el-icon>
+                <el-icon v-if="user.superAdmin === 1 && dataForm.pid != '0'" @click.stop="deptListTreeSetDefaultHandle()" class="el-input__icon"><circle-close /></el-icon>
               </template> </el-input
           ></template>
           <div class="popover-pop-body"><el-tree :data="deptList" :props="{ label: 'name', children: 'children' }" node-key="id" ref="deptListTree" :highlight-current="true" :expand-on-click-node="false" accordion @current-change="deptListTreeCurrentChangeHandle"> </el-tree></div>
@@ -80,7 +80,7 @@ const init = (id?: number) => {
 // 获取部门列表
 const getDeptList = () => {
   return baseService.get("/sys/dept/list").then((res) => {
-    if (res.code !== 0) {
+    if (res.code != 0) {
       return ElMessage.error(res.msg);
     }
     deptList.value = res.data;

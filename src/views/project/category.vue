@@ -758,7 +758,7 @@ export default defineComponent({
       this.userLogin.id = this.store.state.user.id;
       this.userLogin.realName = this.store.state.user.realName;
       this.userLogin.username = this.store.state.user.username;
-      if (this.userLogin.realName !== "项目评审管理员") {
+      if (this.userLogin.realName != "项目评审管理员") {
         this.startVoteVisible = false;
       }
       if (this.userLogin.realName === "超级管理员") {
@@ -771,7 +771,7 @@ export default defineComponent({
     checkConcent(id:string){
       baseService.get("/project/category/" + id).then((res) => {
         console.log(res)
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataForm = res.data;
@@ -793,7 +793,7 @@ export default defineComponent({
         })
         .then((res) => {
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.dataList = res.data;
           this.dataListLoading = false;
           this.dataList = this.getDataListIsPage ? res.data.list : res.data;
@@ -918,7 +918,7 @@ export default defineComponent({
       console.log(id,this.userLogin.id)
       baseService.get("project/project/isParticipant", {categoryId: id,userId:this.userLogin.id}).then( res => {
         console.log(res)
-        if (res.code !== 0) return false
+        if (res.code != 0) return false
         console.log(555 ,id);
         if (res.data) ElMessage.error("你是该项目评审参与人，不能查看项目");
         else this.checkProject(id,status)
@@ -970,12 +970,12 @@ export default defineComponent({
     startVote(id: string, index: number) {
       baseService.get("/project/category/change", { id: id, status: this.dataForm.status }).then((res) => {
         console.log(res);
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         baseService.get("/project/category/" + id).then((res) => {
           console.log(res)
-          if (res.code !== 0) {
+          if (res.code != 0) {
             return this['$message'].error(res.msg);
           }
           this.dataForm = res.data;
@@ -999,7 +999,7 @@ export default defineComponent({
      */
     baseService.get("/project/category/show").then((res) => {
       console.log(res);
-      if (res.code !== 0) return false;
+      if (res.code != 0) return false;
       this.statusNum.disvote = res.data.zero;
       this.statusNum.projecting = res.data.one;
       this.statusNum.projected = res.data.two;

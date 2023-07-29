@@ -68,7 +68,7 @@ const useView = (props: IViewHooksOptions | IObject): IViewHooks => {
 
       const closedTabs = store.state.closedTabs;
       store.updateState({
-        closedTabs: closedTabs.filter((x: string) => x !== store.state.activeTabName)
+        closedTabs: closedTabs.filter((x: string) => x != store.state.activeTabName)
       });
       emits.emit(EMitt.OnReloadTabPage);
     }

@@ -92,7 +92,7 @@ export default defineComponent({
     getInfo() {
       baseService.get("/project/file/" + this.dataForm.id).then((res) => {
         console.log(res)
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataForm = res.data;
@@ -110,7 +110,7 @@ export default defineComponent({
         }
         (!this.dataForm.id ? baseService.post : baseService.put)("/project/file", this.dataForm).then((res) => {
           console.log(res);
-          if (res.code !== 0) {
+          if (res.code != 0) {
             return this['$message'].error(res.msg);
           }
           this['$message']({

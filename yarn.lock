@@ -849,17 +849,15 @@ astral-regex@^2.0.0:
   resolved "https://registry.npmmirror.com/astral-regex/-/astral-regex-2.0.0.tgz"
   integrity sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==
 
+async-validator@^1.6.6:
+  version "1.12.2"
+  resolved "https://registry.npmmirror.com/async-validator/-/async-validator-1.12.2.tgz#beae671e7174d2938b7b4b69d2fb7e722b7fd72c"
+  integrity sha512-57EETfCPFiB7M4QscvQzWSGNsmtkjjzZv318SK1CBlstk+hycV72ocjriMOOM48HjvmoAoJGpJNjC7Z76RlnZA==
+
 async-validator@^4.2.5:
   version "4.2.5"
   resolved "https://registry.npmmirror.com/async-validator/-/async-validator-4.2.5.tgz"
   integrity sha512-7HhHjtERjqlNbZtqNqy2rckN/SpOOlmDliet+lP7k+eKZEjPk3DgyeU9lIXLdeLz0uBbbVp+9Qdow9wJWgwwfg==
-
-async-validator@~1.8.1:
-  version "1.8.5"
-  resolved "https://registry.npmmirror.com/async-validator/-/async-validator-1.8.5.tgz#dc3e08ec1fd0dddb67e60842f02c0cd1cec6d7f0"
-  integrity sha512-tXBM+1m056MAX0E8TL2iCjg8WvSyXu0Zc8LNtYqrVeyoL3+esHRZ4SieE9fKQyyU09uONjnMEjrNBMqT0mbvmA==
-  dependencies:
-    babel-runtime "6.x"
 
 async@^3.2.3:
   version "3.2.3"
@@ -893,14 +891,6 @@ babel-plugin-syntax-dynamic-import@^6.18.0:
   version "6.18.0"
   resolved "https://registry.npmmirror.com/babel-plugin-syntax-dynamic-import/-/babel-plugin-syntax-dynamic-import-6.18.0.tgz#8d6a26229c83745a9982a441051572caa179b1da"
   integrity sha512-MioUE+LfjCEz65Wf7Z/Rm4XCP5k2c+TbMd2Z2JKc7U9uwjBhAfNPE48KC4GTGKhppMeYVepwDBNO/nGY6NYHBA==
-
-babel-runtime@6.x:
-  version "6.26.0"
-  resolved "https://registry.npmmirror.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
-  integrity sha512-ITKNuq2wKlW1fJg9sSW52eepoYgZBggvOAHC0u/CYu/qxQ9EVzThCgR69BnSXLHjy2f7SY5zaQ4yt7H9ZVxY2g==
-  dependencies:
-    core-js "^2.4.0"
-    regenerator-runtime "^0.11.0"
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -1199,11 +1189,6 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.npmmirror.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz"
   integrity sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==
-
-core-js@^2.4.0:
-  version "2.6.12"
-  resolved "https://registry.npmmirror.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
-  integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
 core-js@^3.14.0:
   version "3.22.5"
@@ -1508,16 +1493,14 @@ element-plus@2.2.28:
     memoize-one "^6.0.0"
     normalize-wheel-es "^1.2.0"
 
-element-ui@1.22.19:
-  version "2.15.13"
-  resolved "https://registry.npmmirror.com/element-ui/-/element-ui-2.15.13.tgz#380f019ee7d15b181105587b41fd5914c308a143"
-  integrity sha512-LJoatEYX6WV74FqXBss8Xfho9fh9rjDSzrDrTyREdGb1h1R3uRvmLh5jqp2JU137aj4/BgqA3K06RQpQBX33Bg==
+element-ui@1.2.9:
+  version "1.2.9"
+  resolved "https://registry.npmmirror.com/element-ui/-/element-ui-1.2.9.tgz#ce7332dbbde73f239a72b7ca517cf83b1bf7f1fb"
+  integrity sha512-GSGML5YdIcqYg1XUKypRRpzlc9rlgkB7P1Z2aiQsSV5aW7M5SQu3/HnJCN7MmdSS4RqKLpwW5sRiIsRgW0rxtQ==
   dependencies:
-    async-validator "~1.8.1"
+    async-validator "^1.6.6"
     babel-helper-vue-jsx-merge-props "^2.0.0"
     deepmerge "^1.2.0"
-    normalize-wheel "^1.0.1"
-    resize-observer-polyfill "^1.5.0"
     throttle-debounce "^1.0.1"
 
 emoji-regex@^8.0.0:
@@ -3071,11 +3054,6 @@ normalize-wheel-es@^1.2.0:
   resolved "https://registry.npmmirror.com/normalize-wheel-es/-/normalize-wheel-es-1.2.0.tgz"
   integrity sha512-Wj7+EJQ8mSuXr2iWfnujrimU35R2W4FAErEyTmJoJ7ucwTn2hOUSsRehMb5RSYkxXGTM7Y9QpvPmp++w5ftoJw==
 
-normalize-wheel@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmmirror.com/normalize-wheel/-/normalize-wheel-1.0.1.tgz#aec886affdb045070d856447df62ecf86146ec45"
-  integrity sha512-1OnlAPZ3zgrk8B91HyRj+eVv+kS5u+Z0SCsak6Xil/kmgEia50ga7zfkumayonZrImffAxPU/5WcyGhzetHNPA==
-
 npm-run-path@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmmirror.com/npm-run-path/-/npm-run-path-4.0.1.tgz"
@@ -3478,11 +3456,6 @@ recrawl-sync@^2.0.3:
     slash "^3.0.0"
     tslib "^1.9.3"
 
-regenerator-runtime@^0.11.0:
-  version "0.11.1"
-  resolved "https://registry.npmmirror.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
-  integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
-
 regenerator-runtime@^0.13.4:
   version "0.13.9"
   resolved "https://registry.npmmirror.com/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz"
@@ -3529,11 +3502,6 @@ resize-detector@^0.3.0:
   version "0.3.0"
   resolved "https://registry.npmmirror.com/resize-detector/-/resize-detector-0.3.0.tgz"
   integrity sha512-R/tCuvuOHQ8o2boRP6vgx8hXCCy87H1eY9V5imBYeVNyNVpuL9ciReSccLj2gDcax9+2weXy3bc8Vv+NRXeEvQ==
-
-resize-observer-polyfill@^1.5.0:
-  version "1.5.1"
-  resolved "https://registry.npmmirror.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
-  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-from@^4.0.0:
   version "4.0.0"

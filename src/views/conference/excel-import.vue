@@ -38,7 +38,7 @@ export default defineComponent({
     successHandle(res: IObject) {
       console.log(res);
       console.log(this.fileList);
-      if (res.code !== 0) {
+      if (res.code != 0) {
         return this['$message'].error(res.msg);
       }
       this['$message']({

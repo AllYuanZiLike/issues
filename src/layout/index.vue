@@ -25,7 +25,7 @@ export default defineComponent({
     const router = useRouter();
     const store = useAppStore();
     const state = reactive({
-      isShowNav: sidebarLayoutCache !== ESidebarLayoutEnum.Top,
+      isShowNav: sidebarLayoutCache != ESidebarLayoutEnum.Top,
       sidebarLayout: sidebarLayoutCache,
       themeClass: getThemeConfigToClass(themeCache),
       loading: false,
@@ -44,7 +44,7 @@ export default defineComponent({
     });
     emits.on(EMitt.OnSetNavLayout, (vl) => {
       state.sidebarLayout = vl;
-      state.isShowNav = vl !== ESidebarLayoutEnum.Top;
+      state.isShowNav = vl != ESidebarLayoutEnum.Top;
       if (vl === ESidebarLayoutEnum.Mix) {
         const currRoute = getValueByKeys(getValueByKeys(router.currentRoute.value.meta, "matched", [])[0], "path", "");
         state.mixLayoutRoutes = store.state.routes.find((x: RouteRecordRaw) => x.path === currRoute)?.children ?? [];

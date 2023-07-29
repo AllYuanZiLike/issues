@@ -79,11 +79,11 @@ export default defineComponent({
     },
     filterNode(value: string, data: IObject) {
       if (!value) return true;
-      return data.name.indexOf(value) !== -1;
+      return data.name.indexOf(value) != -1;
     },
     getDeptList(id?: string) {
       return baseService.get("/sys/dept/list").then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.deptList = res.data;
@@ -139,7 +139,7 @@ export default defineComponent({
         deptName:this.dataForm.deptName,
         conferenceId:this.dataForm.conferenceId }).then(res => {
         console.log(res);
-        if (res.code !== 0) return false;
+        if (res.code != 0) return false;
         this.UserList = res.data.list;
         this.dataForm.usertotal = this.getDataListIsPage ? res.data.total : 0;
 

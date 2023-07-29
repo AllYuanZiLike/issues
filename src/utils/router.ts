@@ -97,7 +97,7 @@ export const routesToObject = (routes: any[]): IObject<RouteRecordNormalized> =>
 export const toValidRoutes = (routes: RouteRecordRaw[]): RouteRecordRaw[] => {
   const rs: RouteRecordRaw[] = [];
   routes.forEach((x: RouteRecordRaw) => {
-    if (x.meta && x.meta.isNavigationMenu !== false) {
+    if (x.meta && x.meta.isNavigationMenu != false) {
       if (x.children && x.children.length) {
         x.children = toValidRoutes(x.children);
       }

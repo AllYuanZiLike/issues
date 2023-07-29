@@ -72,7 +72,7 @@ const treeDialog = () => {
 
 const filterNode = (value: string, data: IObject) => {
   if (!value) return true;
-  return data.name.indexOf(value) !== -1;
+  return data.name.indexOf(value) != -1;
 };
 
 const getDataList = (id: any) => {

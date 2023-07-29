@@ -126,7 +126,7 @@ export default defineComponent({
         ...this.dataForm
       }).then( res => {
         console.log(res)
-        if(res.code !== 0) return false;
+        if(res.code != 0) return false;
         this.dataUserForm = res.data.records;
         this.totalUser = res.data.total;
       })
@@ -154,7 +154,7 @@ export default defineComponent({
     // 获取信息
     getInfo() {
       baseService.get("/project/participant/" + this.dataForm.id).then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataForm = res.data;
@@ -172,7 +172,7 @@ export default defineComponent({
           return false;
         }
         (!this.dataForm.id ? baseService.post : baseService.put)("/project/participant", this.dataForm).then((res) => {
-          if (res.code !== 0) {
+          if (res.code != 0) {
             return this['$message'].error(res.msg);
           }
           this['$message']({

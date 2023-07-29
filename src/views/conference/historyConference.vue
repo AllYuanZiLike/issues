@@ -79,7 +79,7 @@ export default defineComponent({
         .post("/conference/degreeconference/selectHistoryConference")
         .then((res) => {
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.dataList = res.data;
         })
     },

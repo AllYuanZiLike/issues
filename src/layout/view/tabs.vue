@@ -53,7 +53,7 @@ export default defineComponent({
       if (!tabKeys[path]) {
         state.tabs.push(route);
       }
-      if (state.activeTabName !== path) {
+      if (state.activeTabName != path) {
         state.activeTabName = path;
       }
     });
@@ -113,7 +113,7 @@ export default defineComponent({
           break;
         case 5:
           //当前
-          if (state.activeTabName !== defaultTab.value) {
+          if (state.activeTabName != defaultTab.value) {
             updateClosedTabs([...store.state.closedTabs, state.activeTabName], false);
             index = findIndex(state.tabs, (x) => x.value === state.activeTabName);
             state.tabs.splice(index, 1);

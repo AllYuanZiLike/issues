@@ -100,7 +100,7 @@ export default defineComponent({
     // 修改：获取信息
     getInfo() {
       baseService.get("/issues/issues/" + this.dataForm.id).then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataForm = res.data;
@@ -116,7 +116,7 @@ export default defineComponent({
     getBaseroomInfo() {
       baseService.get("/sys/baseroom/page", { status: 1 }).then((res) => {
         console.log(res);
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.baseroomForm = res.data.list;
@@ -134,7 +134,7 @@ export default defineComponent({
         }
         (!this.dataForm.id ? baseService.post : baseService.put)("/issues/issues", this.dataForm).then((res) => {
           console.log(res);
-          if (res.code !== 0) {
+          if (res.code != 0) {
             return this['$message'].error(res.msg);
           }
           this['$message']({

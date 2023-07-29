@@ -36,7 +36,7 @@ const init = () => {
 
 // 上传之前
 const beforeUploadHandle = (file: IObject) => {
-  if (file.type !== "image/jpg" && file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/gif") {
+  if (file.type != "image/jpg" && file.type != "image/jpeg" && file.type != "image/png" && file.type != "image/gif") {
     ElMessage.error(t("upload.tip", { format: "jpg、png、gif" }));
     return false;
   }
@@ -45,7 +45,7 @@ const beforeUploadHandle = (file: IObject) => {
 
 // 上传成功
 const successHandle = (res: IObject, file: IObject, list: IObject[]) => {
-  if (res.code !== 0) {
+  if (res.code != 0) {
     return ElMessage.error(res.msg);
   }
 

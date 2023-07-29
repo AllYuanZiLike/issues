@@ -137,7 +137,7 @@ const quillEditorHandle = () => {
 
 // 上传图片之前
 const uploadBeforeUploadHandle = (file: IObject) => {
-  if (file.type !== "image/jpg" && file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/gif") {
+  if (file.type != "image/jpg" && file.type != "image/jpeg" && file.type != "image/png" && file.type != "image/gif") {
     ElMessage.error(t("upload.tip", { format: "jpg、png、gif" }));
     return false;
   }
@@ -145,7 +145,7 @@ const uploadBeforeUploadHandle = (file: IObject) => {
 
 // 上传图片成功
 const uploadSuccessHandle = (res: IObject) => {
-  if (res.code !== 0) {
+  if (res.code != 0) {
     return ElMessage.error(res.msg);
   }
   if (quillEditor.value) {

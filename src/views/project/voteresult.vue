@@ -27,7 +27,7 @@
     <el-pagination :current-page="page" :page-sizes="[10, 20, 50, 100]" :page-size="limit" :total="total" layout="total, sizes, prev, pager, next, jumper" @size-change="pageSizeChangeHandle" @current-change="pageCurrentChangeHandle"> </el-pagination>
     <div class="mod-thesis__tresults" v-if="processVisible">
       <div>
-        <figure v-if="sumVote !== 0">
+        <figure v-if="sumVote != 0">
           <div class="item_box">
 <!--            :theme="theme" :autoresize="autoResize"-->
             <v-chart :option="pie" />
@@ -190,7 +190,7 @@ export default defineComponent({
         baseService.post("/project/voterecord/show", { categoryId: this.dataForm.categoryId }).then((res) => {
           console.log("show")
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           if(res.data.length!=0) this.type = res.data[0].categoryDTO.ruleDTO.type;
           this.Listform = res.data;
           if (this.type === 1) {
@@ -219,7 +219,7 @@ export default defineComponent({
         baseService.post("/project/voterecord/exhibition", { categoryId: this.dataForm.categoryId }).then((res) => {
           console.log("exhibition")
           console.log(res);
-          if (res.code !== 0) {
+          if (res.code != 0) {
             return this['$message'].error(res.msg);
           }
           this.sumVote = res.data.all;
@@ -240,7 +240,7 @@ export default defineComponent({
         baseService.post("/project/voterecord/show", { categoryId: this.dataForm.categoryId }).then((res) => {
           console.log("show")
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.type = res.data[0].categoryDTO.ruleDTO.type;
           this.Listform = res.data;
           console.log(this.type);
@@ -279,7 +279,7 @@ export default defineComponent({
         }).then(() => {
           baseService.get("/project/category/confirm", { categoryId: this.dataForm.categoryId, participantId: this.userLogin.id }).then((res) => {
             console.log(res);
-            if (res.code !== 0) return false;
+            if (res.code != 0) return false;
             // this.$router.push({
             //   path: "/project/vote"
             // });

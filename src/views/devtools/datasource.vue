@@ -72,7 +72,7 @@ const state = reactive({ ...useView(view), ...toRefs(view) });
 
 const datasourceHandle = (id: string) => {
   baseService.get("/devtools/datasource/test/" + id).then((res) => {
-    if (res.code !== 0) {
+    if (res.code != 0) {
       return ElMessage.error(res.msg);
     } else {
       return ElMessage.success(res.data);

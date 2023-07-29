@@ -32,7 +32,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   //外链
   if (to.meta.isNewPage) {
-    if (to.query.pop !== "true") {
+    if (to.query.pop != "true") {
       next(undefined);
       return false;
     }
@@ -44,7 +44,7 @@ router.beforeEach((to, from, next) => {
   const token = getToken();
   const isPop = to.query.pop === "true"; //新窗口打开内页
   NProgress.start();
-  if (to.path !== "/login") {
+  if (to.path != "/login") {
     if (store.state.routes.length) {
       if (to.name === "error") {
         const isMatched = autoRegisterDynamicToRouterAndNext(to);

@@ -86,7 +86,7 @@ export default defineComponent({
     getPro() {
       baseService.post("/conference/degreevoterecord/get", { conferenceId: this.dataForm.conferenceId, subConferenceId: this.dataForm.subConferenceId }).then((res) => {
         console.log(res);
-        if (res.code !== 0) return false;
+        if (res.code != 0) return false;
         this.pro = res.data.percent;
         this.sumVote = res.data.no + res.data.now;
         this.voted = res.data.now;
@@ -94,7 +94,7 @@ export default defineComponent({
       });
       // for (let i = 0; i < this.dataList.length; i++) {
       //   this.dataList[i].voted = this.dataList[i].agree + this.dataList[i].disagree + this.dataList[i].abandon;
-      //   if (this.partSum !== 0) this.dataList[i].pro = (this.dataList[i].voted / this.partSum) * 100;
+      //   if (this.partSum != 0) this.dataList[i].pro = (this.dataList[i].voted / this.partSum) * 100;
       //   else this.dataList[i].pro = 0;
       //   console.log(this.dataList[i].pro);
       // }

@@ -249,7 +249,7 @@ export default defineComponent({
         })
         .then((res) => {
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.Listform = res.data;
           this.voteNum=res.data.length
           this.getDataText();
@@ -272,7 +272,7 @@ export default defineComponent({
         })
         .then((res) => {
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.Listform = res.data;
           this.jianNum=res.data.length
           this.getDataText();
@@ -295,7 +295,7 @@ export default defineComponent({
         })
         .then((res) => {
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.Listform = res.data;
           this.jiNum=res.data.length
           this.getDataText();
@@ -309,7 +309,7 @@ export default defineComponent({
         //是否可以查看项目
         baseService.get("/project/participant/sort", { id: id, participantId: this.userLogin.id }).then((res) => {
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           if (res.data === 0) {
             this.drawerProject = true;
             this.categoryId = "";
@@ -331,7 +331,7 @@ export default defineComponent({
       //查看结果，如果已确认则不能查看结果
       baseService.get("/project/category/confirmTime", { id: id, power: this.userLogin.duty }).then((res) => {
         console.log(res);
-        if (res.code !== 0) return false;
+        if (res.code != 0) return false;
         if (res.data === 0) {
           this.drawerResult = true;
           this.categoryId = "";

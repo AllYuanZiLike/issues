@@ -68,7 +68,7 @@ const deptDialog = () => {
 
 const filterNode = (value: string, data: IObject) => {
   if (!value) return true;
-  return data.name.indexOf(value) !== -1;
+  return data.name.indexOf(value) != -1;
 };
 
 const getDeptList = (id?: string) => {

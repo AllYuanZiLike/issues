@@ -27,7 +27,7 @@ export default defineComponent({
   <template v-for="(x, index) in props.menus || []" :key="x.path">
     <el-sub-menu v-if="x.children && x.children.length > 0" :index="x.path" :popper-class="props.className" :class="classNames({ isMore: x.meta?.isMore })" :style="getStyle(index)">
       <template #title>
-        <el-icon v-if="x.meta?.icon !== false">
+        <el-icon v-if="x.meta?.icon != false">
           <svg-icon :name="`${x.meta?.icon || 'icon-file-fill'}`"></svg-icon>
         </el-icon>
         <span>
@@ -43,7 +43,7 @@ export default defineComponent({
         </a>
         <a v-else>{{ x.meta?.title }}</a>
       </template>
-      <el-icon v-if="x.meta?.icon !== false">
+      <el-icon v-if="x.meta?.icon != false">
         <svg-icon :name="`${x.meta?.icon || 'icon-file-fill'}`"></svg-icon>
       </el-icon>
     </el-menu-item>

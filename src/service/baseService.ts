@@ -28,7 +28,7 @@ export default {
       })
         .then(resolve)
         .catch((error) => {
-          if (error !== "-999") {
+          if (error != "-999") {
             reject(error);
           }
         });

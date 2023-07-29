@@ -88,7 +88,7 @@ export default defineComponent({
     // 修改：获取信息
     getInfo() {
       baseService.get("/issues/subissues/" + this.dataForm.id).then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataForm = res.data;
@@ -98,7 +98,7 @@ export default defineComponent({
     getUserInfo() {
       this.dataForm.issuesId = this.issuesId;
       baseService.get("/issues/issuesparticipant/page", { issuesId: this.dataForm.issuesId, power: 0 }).then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataUserForm = res.data.list;
@@ -114,7 +114,7 @@ export default defineComponent({
           return false;
         }
         (!this.dataForm.id ? baseService.post : baseService.put)("/issues/subissues", this.dataForm).then((res) => {
-          if (res.code !== 0) {
+          if (res.code != 0) {
             return this['$message'].error(res.msg);
           }
           this['$message']({

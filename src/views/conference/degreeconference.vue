@@ -298,7 +298,7 @@ historyConference
     checkConcent(id:string){
       baseService.get("/conference/degreeconference/" + id).then((res) => {
         console.log(res)
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataForm = res.data;
@@ -360,7 +360,7 @@ historyConference
       console.log(id, JSON.stringify(this.dataList[index].status));
       baseService.post("/conference/degreeconference/startOrEnd", { id: id, status: JSON.stringify(this.dataList[index].status) }).then((res) => {
         console.log(res);
-        if (res.code !== 0) return this['$message'].error(res.msg);
+        if (res.code != 0) return this['$message'].error(res.msg);
         this.getDataList();
       });
     },
@@ -394,7 +394,7 @@ historyConference
      */
     baseService.post("/conference/degreeconference/status").then((res) => {
       console.log(res);
-      if (res.code !== 0) return this['$message'].error("出错了");
+      if (res.code != 0) return this['$message'].error("出错了");
       this.disvote = res.data.count0;
       this.voting = res.data.count1;
       this.voted = res.data.count2;

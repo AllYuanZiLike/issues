@@ -19,7 +19,7 @@
     </el-dialog>
     <el-dialog title="文件预览" v-model="dialogFileVisible" width="40%" top="2%">
       <el-empty description="该项目暂无已上传文件" image="src/assets/images/empty_data.png" v-if="file.length === 0" />
-      <el-card class="box-card" v-show="file.length !== 0">
+      <el-card class="box-card" v-show="file.length != 0">
         <div v-for="(item, index) in file" :key="index">
           文件名：{{ item.name }}
           <el-button size="mini" plain type="info" @click="checkFile(index)">查看文件</el-button>
@@ -84,7 +84,7 @@ export default defineComponent({
     getProject() {
       // baseService.get("/project/project/page", { categoryId: this.categoryId }).then((res) => {
       //   console.log(res);
-      //   if (res.code !== 0) return false;
+      //   if (res.code != 0) return false;
       //   this.projectForm = res.data.list;
       // });
       /**
@@ -96,7 +96,7 @@ export default defineComponent({
         })
         .then((res) => {
           console.log(res)
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.projectForm = res.data;
           this.projectForm.forEach(item=>{
             item.poll=0
@@ -150,7 +150,7 @@ export default defineComponent({
             })
             .then((res) => {
               console.log(res);
-              if (res.code !== 0) {
+              if (res.code != 0) {
                 for (let i = 0; i < this.projectForm.length; i++) {
                   this.projectForm[i].poll = this.minpoll;
                 }

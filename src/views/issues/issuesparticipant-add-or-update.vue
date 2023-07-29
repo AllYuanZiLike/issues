@@ -129,7 +129,7 @@ export default defineComponent({
         limit: this.getDataListIsPage ? this.userlimit : null,
         ...this.dataForm
       }).then( res => {
-        if(res.code !== 0) return false;
+        if(res.code != 0) return false;
         this.dataUserForm = res.data.list;
         this.totalUser = res.data.total;
       })
@@ -158,7 +158,7 @@ export default defineComponent({
     getInfo() {
       baseService.get("/issues/issuesparticipant/" + this.dataForm.id).then((res) => {
         console.log(res);
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataForm = res.data;
@@ -175,7 +175,7 @@ export default defineComponent({
         }
         (!this.dataForm.id ? baseService.post : baseService.put)("/issues/issuesparticipant", this.dataForm).then((res) => {
           console.log(res);
-          if (res.code !== 0) {
+          if (res.code != 0) {
             return this['$message'].error(res.msg);
           }
           this['$message']({

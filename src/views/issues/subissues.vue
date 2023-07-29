@@ -185,7 +185,7 @@ export default defineComponent({
       baseService.get("issues/subissues/isExistPticipant", {issuesId: this.dataForm.issuesId}).then( res => {
         console.log(222)
         console.log(res)
-        if(res.code !==0) return false
+        if(res.code !=0) return false
         if(!res.data) ElMessage({message:"请先添加投票人-",type:"warning"})
         else this.addOrUpdateHandle()
       })
@@ -199,7 +199,7 @@ export default defineComponent({
       /**
        * 新增/导出 状态
        */
-      if (this.dataForm.issuesStatus !== 0) this.addBoxVisible = false;
+      if (this.dataForm.issuesStatus != 0) this.addBoxVisible = false;
 
     },
     refresh(){
@@ -267,7 +267,7 @@ export default defineComponent({
      */
     endVote(id: string, index: number) {
       baseService.get("/issues/subissues/endvote", { id: id, status: this.dataList![index].status }).then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.getDataList();

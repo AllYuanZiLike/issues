@@ -20,7 +20,7 @@ export default defineComponent({
     watch(
       () => currentRoute.value,
       () => {
-        breadcrumbs.value = currentRoute.value.path !== home.path ? getValueByKeys(currentRoute.value, "meta.matched", []) : [];
+        breadcrumbs.value = currentRoute.value.path != home.path ? getValueByKeys(currentRoute.value, "meta.matched", []) : [];
       }
     );
 

@@ -29,7 +29,7 @@ const init = () => {
 
 // 上传成功
 const successHandle = (res: IObject) => {
-  if (res.code !== 0) {
+  if (res.code != 0) {
     return ElMessage.error(res.msg);
   }
   ElMessage.success({

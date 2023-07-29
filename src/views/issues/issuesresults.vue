@@ -8,7 +8,7 @@
   :before-close="handleClose"
 >
   <el-empty description="暂无结果" image="src/assets/images/no_result.png" v-if="state.voted === 0" />
-  <div class="mod-issues__issuesresults" v-if="state.voted !== 0">
+  <div class="mod-issues__issuesresults" v-if="state.voted != 0">
 
       <!--      <el-button type="info" :icon="RefreshRight" circle />-->
       <el-button type="info" class="refresh" @click="refresh()">
@@ -171,7 +171,7 @@ const initResult = ()=>{
     page: state.getDataListIsPage ? state.page : null,
     limit: state.getDataListIsPage ? state.limit : null,
     ...state.dataForm}).then(res => {
-    if(res.code !== 0) return false;
+    if(res.code != 0) return false;
     state.dataList = res.data.list;
     state.total = state.getDataListIsPage ? res.data.total : 0;
   })
@@ -197,7 +197,7 @@ const handleClose = (done:()=>void)=> {
 const checkPro=()=> {
       baseService.get("/issues/issuesresults/show", { subIssuesId: state.dataForm.subIssuesId }).then((res) => {
         console.log(res)
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return Message.error(res.msg);
         }
         state.result[0].value = res.data.agree.total;

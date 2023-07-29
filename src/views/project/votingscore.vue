@@ -23,7 +23,7 @@
     </el-dialog>
     <el-dialog title="文件预览" v-model="dialogFileVisible" width="60%" top="2%">
       <el-empty description="该项目暂无已上传文件" image="src/assets/images/empty_data.png" v-if="file.length === 0" />
-      <el-card class="box-card" v-show="file.length !== 0">
+      <el-card class="box-card" v-show="file.length != 0">
         <div v-for="(item, index) in file" :key="index">
           文件名：{{ item.name }}
           <el-button size="mini" plain type="info" @click="checkFile(index)" style="margin-left: 2%;">查看文件</el-button>
@@ -104,7 +104,7 @@ export default defineComponent({
       //   ...this.dataForm
       // }).then((res) => {
       //   console.log(res);
-      //   if (res.code !== 0) return false;
+      //   if (res.code != 0) return false;
       //   this.projectForm = res.data.list;
 
       // });
@@ -117,7 +117,7 @@ export default defineComponent({
         })
         .then((res) => {
           console.log(res)
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.projectForm = res.data;
           this.projectForm = this.projectForm.map((item, index) => {
             return { ...item, grade: this.minscore,voterId:""};
@@ -144,7 +144,7 @@ export default defineComponent({
         console.log(this.projectForm, this.userId);
         baseService.post("/project/voterecord/save", { categoryId: this.categoryId, poll: this.projectForm, participantId: this.userId }).then((res) => {
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this['$message']({
             message: this.$t("投票成功"),
             type: "success",

@@ -144,7 +144,7 @@ export default defineComponent({
         })
         .then((res) => {
           console.log(res)
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.ListForm = res.data;
         });
       /**
@@ -156,7 +156,7 @@ export default defineComponent({
         })
         .then((res) => {
           console.log(res)
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.rule = res.data;
           console.log(this.rule.type)
           if (this.rule.type === 1) {

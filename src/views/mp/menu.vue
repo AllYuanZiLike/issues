@@ -319,7 +319,7 @@ export default defineComponent({
   methods: {
     filterNode(value, data) {
       if (!value) return true;
-      return data.name.indexOf(value) !== -1;
+      return data.name.indexOf(value) != -1;
     },
     handleNodeClick(data) {
       this.appId = data.appId;
@@ -371,10 +371,10 @@ export default defineComponent({
     },
     //选中菜单级别
     selectedMenuLevel() {
-      if (this.selectedMenuIndex !== "" && this.selectedSubMenuIndex === "") {
+      if (this.selectedMenuIndex != "" && this.selectedSubMenuIndex === "") {
         //主菜单
         return 1;
-      } else if (this.selectedMenuIndex !== "" && this.selectedSubMenuIndex !== "") {
+      } else if (this.selectedMenuIndex != "" && this.selectedSubMenuIndex != "") {
         //子菜单
         return 2;
       } else {

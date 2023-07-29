@@ -51,7 +51,7 @@ export default defineComponent({
       watch(
         () => props.modelValue,
         (vl) => {
-          if (vl !== editor.getValue()) {
+          if (vl != editor.getValue()) {
             editor.setValue(vl);
           }
         }

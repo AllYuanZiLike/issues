@@ -28,7 +28,7 @@ export default defineComponent({
     const onInitLang = (vl: string, oldVl?: string) => {
       window.document.querySelector("html")?.setAttribute("lang", vl);
       document.title = t("ui.app.productName");
-      if (oldVl && route.path !== "/login") {
+      if (oldVl && route.path != "/login") {
         store.updateState({ appIsReady: false });
         location.reload();
       }

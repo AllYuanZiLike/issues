@@ -19,7 +19,7 @@ http.interceptors.request.use(
     config.headers["Request-Start"] = new Date().getTime();
     config.headers["Accept-Language"] = getLocaleLang();
     const token = getToken();
-    if (token && config.url !== "/auth/oauth/token") {
+    if (token && config.url != "/auth/oauth/token") {
       config.headers["Authorization"] = "Bearer " + token;
     }
     if (config.method?.toUpperCase() === "GET") {

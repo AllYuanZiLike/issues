@@ -40,7 +40,7 @@ const store = useAppStore();
 const user = computed(() => store.state.user);
 
 const validateConfirmPassword = (rule: IObject, value: string, callback: (e?: Error) => any) => {
-  if (dataForm.newPassword !== value) {
+  if (dataForm.newPassword != value) {
     return callback(new Error(t("updatePassword.validate.confirmPassword")));
   }
   callback();

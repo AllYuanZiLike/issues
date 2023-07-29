@@ -136,7 +136,7 @@ export default defineComponent({
         conferenceId:this.dataForm.conferenceId
         // ...this.dataForm
       }).then( res => {
-        if(res.code !== 0) return false;
+        if(res.code != 0) return false;
         this.dataUserForm = res.data.list;
         this.totalUser = res.data.total;
       })
@@ -167,7 +167,7 @@ export default defineComponent({
     getInfo() {
       baseService.get("/conference/degreeconferenceparticipant/" + this.dataForm.id).then((res) => {
         console.log(res);
-        if (res.code !== 0) {
+        if (res.code != 0) {
           return this['$message'].error(res.msg);
         }
         this.dataForm = res.data;
@@ -185,7 +185,7 @@ export default defineComponent({
         }
         (!this.dataForm.id ? baseService.post : baseService.put)("/conference/degreeconferenceparticipant", this.dataForm).then((res) => {
           console.log(res);
-          if (res.code !== 0) {
+          if (res.code != 0) {
             return this['$message'].error(res.msg);
           }
           this['$message']({

@@ -124,14 +124,14 @@ export default defineComponent({
         })
         .then((res) => {
           console.log(res);
-          if (res.code !== 0) return false;
+          if (res.code != 0) return false;
           this.dataList = res.data;
           this.dataListLoading = false;
           this.dataList = this.getDataListIsPage ? res.data.list : res.data;
           this.total = this.getDataListIsPage ? res.data.total : 0;
           this.getDataText()
           console.log(typeof this.dataForm.categoryStatus)
-          if (this.dataList.length !== 0 || (this.dataForm.categoryStatus !== 0 && this.dataForm.categoryStatus !== 1 && this.dataForm.categoryStatus !== 2)) this.addButton = false;
+          if (this.dataList.length != 0 || (this.dataForm.categoryStatus != 0 && this.dataForm.categoryStatus != 1 && this.dataForm.categoryStatus != 2)) this.addButton = false;
           else this.addButton=true
           console.log(this.addButton)
         })

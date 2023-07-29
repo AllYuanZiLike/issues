@@ -80,7 +80,7 @@ const rejectTask = () => {
         "content-type": "application/x-www-form-urlencoded"
       })
       .then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           ElMessage.error(res.msg);
           return;
         }
@@ -114,7 +114,7 @@ const completeTask = () => {
         "content-type": "application/x-www-form-urlencoded"
       })
       .then((res) => {
-        if (res.code !== 0) {
+        if (res.code != 0) {
           ElMessage.error(res.msg);
           return;
         }

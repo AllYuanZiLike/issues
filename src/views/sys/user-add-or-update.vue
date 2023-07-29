@@ -90,7 +90,7 @@ const validateConfirmPassword = (rule: any, value: string, callback: (e?: Error)
   if (!dataForm.id && !/\S/.test(value)) {
     return callback(new Error(t("validate.required")));
   }
-  if (dataForm.password !== value) {
+  if (dataForm.password != value) {
     return callback(new Error(t("user.validate.confirmPassword")));
   }
   callback();
