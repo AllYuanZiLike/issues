@@ -1,6 +1,6 @@
 <template>
   <div class="mod-project__prjproject">
-    <el-drawer v-model="drawerPro" title="项目" size="90%" direction="rtl" :before-close="handleClose" class="drawer">
+    <el-drawer v-model="drawerPro" title="项目" size="90%" direction="rtl" :before-close="handleClose" class="drawer" style="background-color:#f4f8fd;">
       <div class="query">
         <el-form>
           <el-form-item>
@@ -270,7 +270,7 @@ export default defineComponent({
 </script>
 <style lang="less" scoped>
 .drawer {
-  background-color: #b3c9f3 !important;
+  //background-color: #b3c9f3 !important;
   .refresh {
     margin-bottom: 2%;
   }
@@ -337,7 +337,7 @@ export default defineComponent({
       background-size:  100% 100%;
     }
     .voteItem:nth-child(2n) {
-      background-color: #d2d8f5;
+      background-color: #e4e0fd;
     }
 
     .voteItem {

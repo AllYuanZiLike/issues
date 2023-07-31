@@ -194,6 +194,7 @@
                 </el-button>
               </el-tooltip>
               <el-tooltip class="box-item" effect="light" :content="dataForm.contentText" placement="bottom">
+<!--                v-if="hasPermission('/project:category:changeVote')"-->
                 <el-button class="box-item" type="primary" v-show="startVoteVisible" v-if="hasPermission('/project:category:changeVote')" @click="startVote(dataForm.id,dataForm.status)">
                   <el-icon :size="22" v-if="dataForm.status===0||dataForm.status===2"><VideoPlay /></el-icon>
                   <el-icon :size="22" v-if="dataForm.status===1||dataForm.status===3"><VideoPause /></el-icon>
@@ -756,6 +757,7 @@ export default defineComponent({
     getLoginUser () {
       console.log(this.store.state.user);
       this.userLogin.id = this.store.state.user.id;
+
       this.userLogin.realName = this.store.state.user.realName;
       this.userLogin.username = this.store.state.user.username;
       if (this.userLogin.realName != "项目评审管理员") {

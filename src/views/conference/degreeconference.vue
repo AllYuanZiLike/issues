@@ -85,19 +85,19 @@
           </div>
         </div>
       </div>
-      <el-dialog v-model="checkVisible" title="详细信息" width="90%" draggable>
+      <el-dialog v-model="checkVisible" title="详细信息" width="75%" draggable>
         <div id="check_box">
           <div class="check_left_box">
             <el-descriptions class="margin-top" :title="`会议名称: ${dataForm.name}`" :column="2" size="default" border>
               <template #extra v-if="dataForm.buttonShow">
                 <el-tooltip class="box-item" effect="light" content="修改" placement="bottom">
-                  <el-button type="primary" v-if="hasPermission('issues:issues:update')" @click="addOrUpdateHandle(dataForm.id)">
+                  <el-button type="primary" v-if="hasPermission('conference:degreeconference:update')" @click="addOrUpdateHandle(dataForm.id)">
                     <el-icon :size="20"><Edit /></el-icon>
                   </el-button>
                   <!--                <div class="img" v-if="hasPermission('issues:issues:update')"  @click="addOrUpdateHandle(dataForm.id)"><img src="@/assets/images/issues/update.png" alt="" /></div>-->
                 </el-tooltip>
                 <el-tooltip class="box-item" effect="light" content="删除" placement="bottom">
-                  <el-button type="primary" v-if="hasPermission('issues:issues:delete')" @click="deleteHandle(dataForm.id)">
+                  <el-button type="primary" v-if="hasPermission('conference:degreeconference:delete')" @click="deleteHandle(dataForm.id)">
                     <el-icon :size="20"><Delete /></el-icon>
                   </el-button>
                 </el-tooltip>
@@ -149,8 +149,9 @@
               </el-descriptions-item>
             </el-descriptions>
             <div class="btn_box" v-show="!dataForm.buttonShow">
-              <el-button class="box-item" type="primary" v-if="hasPermission('issues:issues:checkParticipant')" @click="(dataForm.id, dataForm.status)">查看参与人</el-button>
-              <el-button class="box-item" type="primary" v-if="hasPermission('issues:issues:checkSubissues')" @click="checkSub(dataForm.id, dataForm.status)">查看子议题</el-button>
+              <el-button class="box-item" type="primary" v-if="hasPermission('conference:degreeconference:participant')" @click="(dataForm.id, dataForm.status)">查看参与人</el-button>
+              <el-button class="box-item" type="primary" v-if="hasPermission('conference:degreeconference:sub')" @click="checkSub(dataForm.id, dataForm.status)">查看子会议</el-button>
+              <el-button class="box-item" type="primary" v-show="dataForm.status==1" v-if="hasPermission('conference:degreeconference:startOrStop')" @click="startVote(dataForm.id, dataForm.status)">结束会议</el-button>
             </div>
           </div>
           <div class="check_right_box" v-show="dataForm.buttonShow">
@@ -158,17 +159,23 @@
               <el-timeline v-show="dataForm.status===0">
                 <el-timeline-item timestamp="投票人、监票人...">添加参与人</el-timeline-item>
                 <el-timeline-item timestamp="名称、介绍、...">添加子议题</el-timeline-item>
+                <el-timeline-item timestamp="开始评审...">开始评审</el-timeline-item>
               </el-timeline>
             </div>
             <div class="right">
               <el-tooltip effect="light" content="添加参与人" placement="bottom">
-                <el-button class="box-item" type="primary" v-if="hasPermission('issues:issues:checkParticipant')" @click="participantHandle(dataForm.id, dataForm.status)">
+                <el-button class="box-item" type="primary" v-if="hasPermission('conference:degreeconference:participant')" @click="participantHandle(dataForm.id, dataForm.status)">
                   <el-icon><User /></el-icon>
                 </el-button>
               </el-tooltip>
               <el-tooltip effect="light" content="添加子会议" placement="bottom">
-                <el-button class="box-item" type="primary"  v-if="hasPermission('issues:issues:checkSubissues')" @click="checkSub(dataForm.id, dataForm.status)">
+                <el-button class="box-item" type="primary"  v-if="hasPermission('conference:degreeconference:sub')" @click="checkSub(dataForm.id, dataForm.status)">
                   <el-icon><DocumentCopy /></el-icon>
+                </el-button>
+              </el-tooltip>
+              <el-tooltip effect="light" content="开始评审" placement="bottom">
+                <el-button class="box-item" type="primary"  v-if="hasPermission('conference:degreeconference:startOrStop')" @click="startVote(dataForm.id, dataForm.status)">
+                  <el-icon><VideoPlay /></el-icon>
                 </el-button>
               </el-tooltip>
             </div>

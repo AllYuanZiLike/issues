@@ -81,6 +81,7 @@ const useView = (props: IViewHooksOptions | IObject): IViewHooks => {
   //
   const rejectFns = {
     hasPermission(key: string) {
+      console.log(key,checkPermission(store.state.permissions as string[], key))
       return checkPermission(store.state.permissions as string[], key);
     },
     getDictLabel(dictType: string, dictValue: number) {

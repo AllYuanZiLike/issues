@@ -333,7 +333,7 @@ export default defineComponent({
     background-size:  100% 100%;
   }
   .voteItem:nth-child(2n) {
-    background-color: #d2d8f5;
+    background-color: #e4e0fd;
   }
 
   .voteItem {
