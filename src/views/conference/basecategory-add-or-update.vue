@@ -62,9 +62,12 @@ export default defineComponent({
     getInfo() {
       baseService.get("/conference/basecategory/" + this.dataForm.id).then((res) => {
         if (res.code != 0) {
-          return this['$message'].error(res.msg);
+          // return this['$message'].error(res.msg);
+          return false;
         }
         this.dataForm = res.data;
+      }).catch(res=>{
+        console.log(res)
       });
     },
     // 表单提交
